@@ -1,0 +1,25 @@
+.divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+
+
+ 
+/* 单元格标题title */
+.van-cell .van-cell__title {
+  color: #7186e1;
+}
+ 
+
+
+.image-container {
+  max-height: 100px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
