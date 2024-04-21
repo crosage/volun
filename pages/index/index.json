@@ -1,4 +1,6 @@
 {
   "usingComponents": {
+    "volun_card":"../../components/volun_card/volun_card",
+    "test":"../../components/test/test"
   }
 }

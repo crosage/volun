@@ -1,18 +1,10 @@
-// components/volun_card/volun_card.js
+// components/test/test.js
 Component({
 
   /**
    * 组件的属性列表
    */
   properties: {
-    title: {
-      type: String,
-      value: ""
-    },
-    label: {
-      type: String,
-      value: ""
-    },
 
   },
 
