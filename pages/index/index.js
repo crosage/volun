@@ -32,14 +32,17 @@ Page({
       }
     })
   },
+  //  const {activityDetail, activityThumbnail, requiredPeople, activityTitle } = event
   haha:function(){
     wx.cloud.callFunction({
       // 云函数名称
-      name: 'test',
+      name: 'createVolunteerActivity',
       // 传给云函数的参数
       data: {
-        a: 1,
-        b: 2,
+        activityDetail: "详细详细",
+        activityThumbnail: "缩略缩略",
+        requiredPeople: "需要需要",
+        activityTitle: "标题标题"
       },
     })
     .then(res => {

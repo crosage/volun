@@ -1,1 +1,8 @@
 /* components/volun_card/volun_card.wxss */
+
+.divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
