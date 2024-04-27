@@ -1,5 +1,6 @@
 CREATE TABLE User (
     _id VARCHAR(255),
+    openid VARCHAR(255),
     user_name VARCHAR(255),
     student_id VARCHAR(255),
     type INT,

@@ -8,24 +8,14 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  const { user_name, student_id, type } = event
-
-  // 构造用户数据
-  const userData = {
-    openid: wxContext.OPENID, 
-    user_name: user_name,
-    student_id: student_id,
-    type: type
-  }
+  const { id } = event
 
   try {
-    await db.collection("User").add({
-      data: userData
-    })
+    const res = await db.collection("User").doc(_id).remove()
     return {
       code: 200,
-      message: "用户创建成功",
-      openid: wxContext.OPENID
+      message: "用户删除成功",
+      result: res.stats
     }
   } catch (err) {
     console.error(err)

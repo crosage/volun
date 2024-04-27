@@ -1,19 +1,9 @@
-<van-column>
-  <van-row>
-    <!-- <test></test> -->
-    <volun_card title="haha" label="hoho"></volun_card>
-  </van-row>
-  <van-row>
-    <van-button bind:tap="haha">
-      测试
-    </van-button>
-  </van-row>
-</van-column>
+<!--pages/admin/admin.wxml-->
+<text>pages/admin/admin.wxml</text>
+
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="home-o"></van-tabbar-item>
   <van-tabbar-item name="search" icon="search"></van-tabbar-item>
   <van-tabbar-item name="friends" icon="friends-o"></van-tabbar-item>
   <van-tabbar-item name="setting" icon="setting-o"></van-tabbar-item>
 </van-tabbar>
-
-

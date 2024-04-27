@@ -2,19 +2,38 @@ wx.cloud.init({
   env: 'volun-4g5ysmbd4b2b8c09', 
   traceUser: true,
 })
+
 Page({
   data: {
+    active:"home",
   },
   play: function () {
     this.videoContext.play()
   },
-  onChange(event) {
-    // event.detail 为当前输入的值
-    
-    this.setData({
-      imageUrl: event.detail
-    });
-    // console.log(imageUrl);
+  onChangePage(event) {
+    this.setData({ active: event.detail })
+    switch (event.detail) {
+      case 'home':
+        wx.navigateTo({
+          url: '/pages/index/index'
+        })
+        break;
+      case 'search':
+        wx.navigateTo({
+          url: '/pages/admin/admin'
+        });
+        break;
+      case 'friends':
+        wx.switchTab({
+          url: '/pages/friends/friends'
+        });
+        break;
+      case 'setting':
+        wx.switchTab({
+          url: '/pages/setting/setting'
+        });
+        break;
+    }
   },
   chooseVideo: function(){
     var that=this;
@@ -36,7 +55,7 @@ Page({
   haha:function(){
     wx.cloud.callFunction({
       // 云函数名称
-      name: 'createVolunteerActivity',
+      name: 'test',
       // 传给云函数的参数
       data: {
         activityDetail: "详细详细",
