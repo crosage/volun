@@ -1,8 +1,8 @@
+// 创建新的活动
+
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-console.log("???????????????????????")
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
-console.log("???????????????????????")
 const db=cloud.database()
 
 // 云函数入口函数
@@ -34,7 +34,7 @@ exports.main = async (event, context) => {
     creator: wxContext.OPENID
   }
   try {
-    const res=await db.collection("Activities").add({
+    const res=await db.collection("activities").add({
       data:activityData
     })
     return {
