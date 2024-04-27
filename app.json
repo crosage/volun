@@ -1,11 +1,9 @@
 {
   "lazyCodeLoading": "requiredComponents",
   "pages": [
-    "pages/admin/admin",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/login/login",
-    "pages/test/test"
+    "pages/admin/admin",
+    "pages/my/my"
   ],
   "window": {
     "navigationBarTextStyle": "black",

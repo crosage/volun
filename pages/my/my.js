@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:"admin",
+    active:"my",
   },
   play: function () {
     this.videoContext.play()
@@ -24,7 +24,7 @@ Page({
         });
         break;
       case 'my':
-        wx.navigateTo({
+        wx.switchTab({
           url: '/pages/my/my'
         });
         break;

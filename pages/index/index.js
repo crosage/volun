@@ -12,25 +12,31 @@ Page({
   },
   onChangePage(event) {
     this.setData({ active: event.detail })
+    console.log(event.detail)
     switch (event.detail) {
+      
       case 'home':
         wx.navigateTo({
-          url: '/pages/index/index'
+          url: '/pages/index/index',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
         })
         break;
-      case 'search':
+      case 'dashboard':
         wx.navigateTo({
-          url: '/pages/admin/admin'
+          url: '/pages/admin/admin',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
         });
         break;
-      case 'friends':
-        wx.switchTab({
-          url: '/pages/friends/friends'
-        });
-        break;
-      case 'setting':
-        wx.switchTab({
-          url: '/pages/setting/setting'
+      case 'my':
+        wx.navigateTo({
+          url: '/pages/my/my',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
         });
         break;
     }
@@ -53,21 +59,12 @@ Page({
   },
   //  const {activityDetail, activityThumbnail, requiredPeople, activityTitle } = event
   haha:function(){
-    wx.cloud.callFunction({
-      // 云函数名称
-      name: 'test',
-      // 传给云函数的参数
-      data: {
-        activityDetail: "详细详细",
-        activityThumbnail: "缩略缩略",
-        requiredPeople: "需要需要",
-        activityTitle: "标题标题"
-      },
-    })
-    .then(res => {
-      console.log(res.result) // 3
-    })
-    .catch(console.error)
+    wx.switchTab({
+      url: '/pages/admin/admin',
+      fail: function(res){
+        console.error("跳转失败:",res)
+      }
+    });
   },
   downloadFile: function () {
     var that = this
