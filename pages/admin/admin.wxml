@@ -1,8 +1,28 @@
 <!--pages/admin/admin.wxml-->
-<text>pages/admin/admin.wxml</text>
+<!-- <text>pages/admin/admin.wxml</text> -->
+<van-nav-bar
+  title="标题"
+  left-arrow
+  bind:click-left="onClickLeft"
+  bind:click-right="onClickRight"
+/>
 
+
+<van-column>
+  <van-row>
+    <view class="add-task">
+      <view class="mask">
+        <van-button icon="plus" size="large">
+          添加新的任务
+        </van-button>
+      </view>
+    </view>
+  </van-row>
+
+</van-column>
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
-  <van-tabbar-item name="dashboard" icon="user-o"></van-tabbar-item>
+  <van-tabbar-item name="dashboard" icon="orders-o"></van-tabbar-item>
+  <van-tabbar-item name="users" icon="user-o" wx:if="{{3>2}}"></van-tabbar-item>
   <van-tabbar-item name="my" icon="smile-o"></van-tabbar-item>
 </van-tabbar>

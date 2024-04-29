@@ -1,41 +1,13 @@
-// pages/admin/admin.js
+// pages/dashboard/dashboard.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active:"dashboard",
-    activities:[],
-    userPermission:0,
 
   },
-  play: function () {
-    this.videoContext.play()
-  },
-  onChangePage(event) {
-    this.setData({ active: event.detail })
-    switch (event.detail) {
-      case 'home':
-        wx.navigateTo({
-          url: '/pages/index/index'
-        })
-        break;
-      case 'dashboard':
-        wx.navigateTo({
-          url: '/pages/admin/admin'
-        });
-        break;
-      case 'my':
-        wx.navigateTo({
-          url: '/pages/my/my'
-        });
-        break;
-    }
-  },
-  loadActivities: function(){
-    
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

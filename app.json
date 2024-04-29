@@ -3,12 +3,11 @@
   "pages": [
     "pages/index/index",
     "pages/admin/admin",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/dashboard/dashboard"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationStyle": "custom"
   },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
@@ -31,6 +30,7 @@
     "van-field": "@vant/weapp/field/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
-    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
   }
 }

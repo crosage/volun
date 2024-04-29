@@ -3,6 +3,7 @@
 
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
-  <van-tabbar-item name="dashboard" icon="user-o"></van-tabbar-item>
+  <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{userPermission>=1}}"></van-tabbar-item>
+  <van-tabbar-item name="admin" icon="user-o" wx:if="{{userPermission>=3}}"></van-tabbar-item>
   <van-tabbar-item name="my" icon="smile-o"></van-tabbar-item>
 </van-tabbar>

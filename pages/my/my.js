@@ -6,6 +6,7 @@ Page({
    */
   data: {
     active:"my",
+    userPermission: 0
   },
   play: function () {
     this.videoContext.play()
