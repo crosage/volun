@@ -31,7 +31,14 @@ Page({
         break;
     }
   },
-
+  login(){
+    wx.navigateTo({
+      url: '/pages/login/login',
+      fail: function(res){
+        console.error("跳转失败:",res)
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

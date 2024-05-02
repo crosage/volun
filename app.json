@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/admin/admin",
     "pages/my/my",
+    "pages/login/login",
     "pages/dashboard/dashboard"
   ],
   "window": {
@@ -31,6 +32,7 @@
     "van-toast": "@vant/weapp/toast/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-nav-bar": "@vant/weapp/nav-bar/index"
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   }
 }

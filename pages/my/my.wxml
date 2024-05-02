@@ -1,6 +1,36 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<van-nav-bar
+  title="标题"
+  left-arrow
+  bind:click-left="onClickLeft"
+  bind:click-right="onClickRight"
+/>
+<van-cell>
+  <view slot="title">
+    <van-row>
+      <van-image
+        round
+        width="60px"
+        height="60px"
+        fit="cover"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        bind:click="login"
+      />
 
+      <!-- <van-tag type="danger">标签</van-tag> -->
+    </van-row>
+
+  </view>
+</van-cell>
+<van-cell title="单元格">
+  <van-icon slot="right-icon" name="search" class="custom-icon" />
+</van-cell>
+
+
+<van-row style="background-color: rgb(3, 5, 8);">
+  
+
+</van-row>
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
   <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{userPermission>=1}}"></van-tabbar-item>

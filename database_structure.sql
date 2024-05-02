@@ -3,6 +3,8 @@ CREATE TABLE users (
     openid VARCHAR(255),
     user_name VARCHAR(255),
     student_id VARCHAR(255),
+    name VARCHAR(255),
+    password VARCHAR(255),
     type INT,
     PRIMARY KEY (_id)
 );
