@@ -5,7 +5,7 @@
   bind:click-left="onClickLeft"
   bind:click-right="onClickRight"
 />
-<van-column>
+<view>
   <view class="container">
     <van-field
       custom-class="login-input"
@@ -27,7 +27,7 @@
       注册或登录
     </van-button>
   </view>
-</van-column>
+</view>
 
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>

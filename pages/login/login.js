@@ -8,8 +8,6 @@ Page({
   data: {
     username:"",
     passhash:"",
-    userPermission: 0,
-    username:""
   },
   onChangePage(event) {
     this.setData({ active: event.detail })
@@ -63,7 +61,13 @@ Page({
       }
     }).then(res=>{
       console.log(res.result)
-      wx.setStorageSync('token', this.data.username)
+      let expirationTime = new Date().getTime() + 10 * 24 * 60 * 60 * 1000; // 10天的有效期
+      let tmp=new Date().getTime()
+      console.log(tmp)
+      wx.setStorageSync('token', {
+        value: this.data.username,
+        expires: expirationTime,
+      });
       console.log("完成set"+wx.getStorageSync('token'))
       wx.navigateTo({
         url: '/pages/my/my',
@@ -77,13 +81,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let token=wx.getStorageSync('token')
-    if(token!=""){
-      this.setData({
-        username:token,
-        userPermission:1,
-      })
-    }
+
   },
 
   /**
@@ -134,6 +132,4 @@ Page({
   onShareAppMessage() {
 
   }
-
-
 })

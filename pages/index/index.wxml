@@ -4,17 +4,17 @@
   bind:click-left="onClickLeft"
   bind:click-right="onClickRight"
 />
-<van-column>
+<view>
   <van-row>
     <!-- <test></test> -->
     <volun_card title="haha" label="hoho"></volun_card>
   </van-row>
   <van-row>
-    <van-button bind:tap="handleLogin">
+    <van-button bind:tap="handtest">
       测试
     </van-button>
   </van-row>
-</van-column>
+</view>
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
   <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{userPermission>=1}}"></van-tabbar-item>

@@ -56,13 +56,31 @@ Page({
         break;
     }
   },
-  onLoad(){
-    let token=wx.getStorageSync('token')
-    if(token!=""){
-      this.setData({
-        username:token,
-        userPermission:1,
-      })
-    }    
-  }
+  handtest(){
+    wx.removeStorageSync('token');
+    this.setData({
+      userPermission:0,
+      username:""
+    })
+  },
+  onLoad(options) {
+    let storedToken = wx.getStorageSync('token');
+    let token = storedToken.value;
+    let expirationTime = storedToken.expires;
+    if(storedToken!=""){
+        // 检查 token 是否过期
+      if (expirationTime && new Date().getTime() > expirationTime) {
+        // Token 已过期，需要重新获取
+        // 清除过期的 token
+        wx.removeStorageSync('token');
+        // 这里可以执行重新获取 token 的逻辑
+      } else {
+        // Token 未过期，可以使用
+        this.setData({
+          username:token,
+          userPermission:1,
+        })
+      }
+    }
+  },
 })
