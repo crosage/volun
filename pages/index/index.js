@@ -63,6 +63,6 @@ Page({
         username:token,
         userPermission:1,
       })
-    }
+    }    
   }
 })
