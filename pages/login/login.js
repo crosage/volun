@@ -7,7 +7,9 @@ Page({
    */
   data: {
     username:"",
-    passhash:""
+    passhash:"",
+    userPermission: 0,
+    username:""
   },
   onChangePage(event) {
     this.setData({ active: event.detail })
@@ -61,13 +63,27 @@ Page({
       }
     }).then(res=>{
       console.log(res.result)
+      wx.setStorageSync('token', this.data.username)
+      console.log("完成set"+wx.getStorageSync('token'))
+      wx.navigateTo({
+        url: '/pages/my/my',
+        fail: function(res){
+          console.error("跳转失败:",res)
+        }
+      });
     }).catch(console.error)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let token=wx.getStorageSync('token')
+    if(token!=""){
+      this.setData({
+        username:token,
+        userPermission:1,
+      })
+    }
   },
 
   /**

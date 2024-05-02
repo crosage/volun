@@ -12,6 +12,7 @@ Page({
   data: {
     active:"home",
     userPermission: 0,
+    username:""
   },
   play: function () {
     this.videoContext.play()
@@ -55,4 +56,13 @@ Page({
         break;
     }
   },
+  onLoad(){
+    let token=wx.getStorageSync('token')
+    if(token!=""){
+      this.setData({
+        username:token,
+        userPermission:1,
+      })
+    }
+  }
 })

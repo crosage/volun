@@ -1,6 +1,6 @@
 <!-- pages/login/login.wxml -->
 <van-nav-bar
-  title="标题"
+  title="登录页面"
   left-arrow
   bind:click-left="onClickLeft"
   bind:click-right="onClickRight"
