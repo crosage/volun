@@ -8,7 +8,7 @@
           <view class="van-cell-text">{{title}}</view>
         </view>
         <view slot="label">
-          <van-col>
+          <view>
             <van-row>
               <view class="van-cell-text">
                 {{label}}
@@ -19,7 +19,7 @@
                 <van-icon name="arrow-left" />
                 <van-icon name="arrow" />
             </view>
-          </van-col>
+          </view>
         </view>
       </van-cell>
 </van-cell-group>
