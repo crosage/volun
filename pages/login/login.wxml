@@ -11,22 +11,19 @@
       custom-class="login-input"
       model:value="{{ username }}"
       placeholder="请输入用户名"
-      bind:input="handleUsernameInput"
       input-align="center"
     />
   </view>
   <view class="container">
     <van-field
       custom-class="login-input"
-      model:value="{{ password }}"
+      model:value="{{ passhash }}"
       placeholder="请输入密码"
-      type="password"
-      bind:input="handlePasswordInput"
       input-align="center"
     />
   </view>
   <view style="margin: 20px;">
-    <van-button size="large" color="skyblue">
+    <van-button size="large" color="skyblue" bind:click="onLogin">
       注册或登录
     </van-button>
   </view>

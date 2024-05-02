@@ -1,4 +1,5 @@
 // pages/login/login.js
+import {hex_md5} from "../../utils/md5"
 Page({
 
   /**
@@ -6,9 +7,62 @@ Page({
    */
   data: {
     username:"",
-    password:""
+    passhash:""
   },
-
+  onChangePage(event) {
+    this.setData({ active: event.detail })
+    console.log(event.detail)
+    switch (event.detail) {
+      case 'home':
+        wx.navigateTo({
+          url: '/pages/index/index',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
+        })
+        break;
+      case 'dashboard':
+        wx.navigateTo({
+          url: '/pages/dashboard/dashboard',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
+        });
+        break;
+      case 'admin':
+          wx.navigateTo({
+            url: '/pages/admin/admin',
+            fail: function(res){
+              console.error("跳转失败:",res)
+            }
+          });
+          break;
+      case 'my':
+        wx.navigateTo({
+          url: '/pages/my/my',
+          fail: function(res){
+            console.error("跳转失败:",res)
+          }
+        });
+        break;
+    }
+  },
+  // const { user_name,passhash,student_name, student_id, type} = event
+  onLogin(){
+    let pass=hex_md5(this.data.passhash)
+    wx.cloud.callFunction({
+      name:"createNewUser",
+      data:{
+        user_name:this.data.username,
+        passhash:pass,
+        student_name:"",
+        student_id:"",
+        type:1
+      }
+    }).then(res=>{
+      console.log(res.result)
+    }).catch(console.error)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -64,4 +118,6 @@ Page({
   onShareAppMessage() {
 
   }
+
+
 })
