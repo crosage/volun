@@ -11,8 +11,10 @@ exports.main = async (event, context) => {
   const { user_name } = event 
 
   try {
-    const res = await db.collection("users").doc(user_name).get()
-    if (res.data) {
+    const res = await db.collection("users").where({
+      user_name:user_name
+    }).get()
+    if (res.data.length>0) {
       return {
         code: 200,
         message: "查询成功",
@@ -21,14 +23,17 @@ exports.main = async (event, context) => {
     } else {
       return {
         code: 404,
-        message: "未找到对应用户"
+        message: "未找到对应用户",
+        user_name: user_name,
       }
     }
   } catch (err) {
     console.error(err)
     return {
       code: 500,
-      message: "服务器内部错误"
+      message: "服务器内部错误",
+      user_name:user_name,
+      err: err
     }
   }
 }

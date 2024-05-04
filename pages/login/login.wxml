@@ -5,6 +5,9 @@
   bind:click-left="onClickLeft"
   bind:click-right="onClickRight"
 />
+<van-toast id="van-toast" />
+
+
 <view>
   <view class="container">
     <van-field
@@ -23,7 +26,7 @@
     />
   </view>
   <view style="margin: 20px;">
-    <van-button size="large" color="skyblue" bind:click="onLogin">
+    <van-button size="large" color="skyblue" bind:click="onLogin" round >
       注册或登录
     </van-button>
   </view>

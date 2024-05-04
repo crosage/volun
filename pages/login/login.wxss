@@ -1,5 +1,7 @@
 /* pages/login/login.wxss */
-
+page {
+  background-color: #ffffff;
+}
 .container {
   border-radius: 10px; /* 设置圆角 */
   background-color: #ffffff; /* 设置背景色 */
