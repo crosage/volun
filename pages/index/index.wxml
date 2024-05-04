@@ -15,8 +15,7 @@
     </van-button>
   </van-row>
 </view>
-<floating_action_icon>
-</floating_action_icon>
+
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
   <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{userPermission>=1}}"></van-tabbar-item>

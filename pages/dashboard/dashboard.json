@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "floating_action_icon":"../../components/floating_action_icon/floating_action_icon"
+  }
 }
