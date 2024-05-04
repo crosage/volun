@@ -1,0 +1,17 @@
+/* components/floating_action_icon/floating_action_icon.wxss */
+/* floating-action-button.wxss */
+.fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 4rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}

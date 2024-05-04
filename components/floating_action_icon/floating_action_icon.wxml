@@ -1,0 +1,5 @@
+<!--components/floating_action_icon/floating_action_icon.wxml-->
+<view class="fab">
+  <van-icon name="{{icon}}" />
+  <slot></slot>
+</view>
