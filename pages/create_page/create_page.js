@@ -1,11 +1,16 @@
 // pages/create_page/create_page.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    activity_name: '',
+    description: '',
+    location: '',
+    date: '',
+    registration_deadline: '',
+    max_participants: 0,
+    organizer: ''
   },
 
   /**

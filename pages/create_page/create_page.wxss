@@ -1,1 +1,3 @@
-/* pages/create_page/create_page.wxss */
+page {
+  background-color: #ffffff;
+}

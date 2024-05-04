@@ -1,2 +1,35 @@
-<!--pages/create_page/create_page.wxml-->
-<text>pages/create_page/create_page.wxml</text>
+<van-nav-bar
+  title="提交表单"
+  left-arrow
+  bind:click-left="onClickLeft"
+  bind:click-right="onClickRight"
+/>
+    <!-- activity_name,
+    description_thumb,
+    description,
+    location,
+    date,
+    post_time,
+    registration_deadline,
+    organizer,
+    max_participants,
+    current_participants, -->
+<van-cell-group>
+  <van-field label="活动名称" model:value="{{activity_name}}" placeholder="请输入活动名称"></van-field>
+  <van-field label="活动简介" model:value="{{description}}" placeholder="请输入活动简介"></van-field>
+  <van-field label="活动地点" model:value="{{location}}" placeholder="选填"></van-field>
+  <van-field label="日期" model:value="{{date}}"></van-field>
+  <van-field label="报名截止日期" model:value="{{registration_deadline}}"></van-field>
+  <van-field label="最大参与人数" model:value="{{max_participants}}" placeholder="请输入最大参与人数"></van-field>
+  <van-field label="主办方" v-model="organizer" placeholder="选填"></van-field>
+  <van-row>
+    <van-col offset="12" span="12">
+      取消
+      <!-- <van-button type="primary" click="createActivity">创建活动</van-button> -->
+    </van-col>
+    <!-- <van-col>
+      <van-button type="primary" click="createActivity">创建活动</van-button>
+    </van-col> -->
+  </van-row>
+  
+</van-cell-group>
