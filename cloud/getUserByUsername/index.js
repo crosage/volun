@@ -28,12 +28,10 @@ exports.main = async (event, context) => {
       }
     }
   } catch (err) {
-    console.error(err)
     return {
       code: 500,
       message: "服务器内部错误",
-      user_name:user_name,
-      err: err
+      error:err
     }
   }
 }

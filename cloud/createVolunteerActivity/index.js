@@ -43,10 +43,10 @@ exports.main = async (event, context) => {
       activityId: res._id
     }
   } catch(err) {
-    console.error(err)
     return {
-      code:500,
-      message: "服务器内部错误"
+      code: 500,
+      message: "服务器内部错误",
+      error:err
     }
   }
 }

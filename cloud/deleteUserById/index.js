@@ -20,10 +20,10 @@ exports.main = async (event, context) => {
       result: res.stats
     }
   } catch (err) {
-    console.error(err)
     return {
       code: 500,
-      message: "服务器内部错误"
+      message: "服务器内部错误",
+      error:err
     }
   }
 }

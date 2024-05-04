@@ -35,7 +35,7 @@ exports.main = async (event, context) => {
     return {
       code: 500,
       message: "服务器内部错误",
-      event:event
+      error:err
     }
   }
 }

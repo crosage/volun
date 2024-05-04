@@ -5,7 +5,8 @@
     "pages/admin/admin",
     "pages/my/my",
     "pages/login/login",
-    "pages/dashboard/dashboard"
+    "pages/dashboard/dashboard",
+    "pages/create_page/create_page"
   ],
   "window": {
     "navigationStyle": "custom"

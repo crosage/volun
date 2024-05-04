@@ -55,6 +55,14 @@ Page({
   loadActivities: function(){
     
   },
+  createActivity (){
+    wx.navigateTo({
+      url: '/pages/create_page/create_page',
+      fail: function(res){
+        console.error("跳转失败:",res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
