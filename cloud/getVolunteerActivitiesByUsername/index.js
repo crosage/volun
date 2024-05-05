@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
   try {
     const res = await db.collection("activities")
       .where({
-        user_name: user_name
+        creator: user_name
       })
       .skip((page_number - 1) * page_size)
       .limit(page_size)
@@ -29,6 +29,11 @@ exports.main = async (event, context) => {
         code: 200,
         message: "查询成功",
         data: res.data
+      }
+    } else {
+      return {
+        code: 404,
+        message: "未查询到你的"
       }
     }
   } catch (err) {

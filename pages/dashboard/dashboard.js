@@ -6,7 +6,10 @@ Page({
    */
   data: {
     active: "dashboard",
-    activities: [],
+    page: 1,
+    page_size: 20,
+    attended_activities: [],
+    managed_activities: [],
     userPermission: 0,
     username: ""
   },
@@ -87,6 +90,23 @@ Page({
         })
       }
     }
+
+    wx.cloud.callFunction({
+      name: "getVolunteerActivitiesByUsername",
+      data: {
+        user_name: this.data.username,
+        page_size: this.data.page_size,
+        page_number: this.data.page
+      }
+    }).then(res => {
+      var code = res.result["code"]
+      if (code == 200) {
+        this.setData({
+          managed_activities: res.result["data"]
+        })
+        console.log(this.data.managed_activities)
+      } else {}
+    }).catch(console.error)
   },
 
   /**

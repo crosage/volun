@@ -102,11 +102,7 @@ Page({
         this.setData({
           activities: res.result["data"]
         })
-        console.log(this.data.activities)
-        console.log(this.data.names)
-        console.log(this.data.user_permission)
       } else {
-
       }
     }).catch(console.error)
   },
