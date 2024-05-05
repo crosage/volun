@@ -5,6 +5,7 @@ Page({
    */
   data: {
     activity_name: '',
+    description_thumb: "",
     description: '',
     location: '',
     date: '',
@@ -15,7 +16,9 @@ Page({
     max_date: new Date(new Date().getTime()).setFullYear(new Date(new Date().getTime()).getFullYear() + 1),
     current_date: new Date().getTime(),
     show: 0,
-    formatted_date: ""
+    formatted_date: "",
+    username: "",
+    user_permission: 0
   },
   onInputDatetime() {
     this.setData({
@@ -34,12 +37,12 @@ Page({
       formatted_date: `${year}-${month}-${day} ${hour}:${minutes}`
     });
   },
-  onClose() {
+  onCloseDatetimePicker() {
     this.setData({
       show: false
     });
   },
-  onPostList() {
+  onSubmitForm() {
     // activity_name,
     // description_thumb,
     // description,
@@ -50,12 +53,60 @@ Page({
     // organizer,
     // max_participants,
     // current_participants,
+    wx.cloud.callFunction({
+      name: "createVolunteerActivity",
+      data: {
+        activity_name: this.data.activity_name,
+        description_thumb: this.data.description_thumb,
+        description: this.data.description,
+        location: this.data.location,
+        date: "",
+        post_time: new Date().getTime(),
+        registration_deadline: this.data.current_date,
+        organizer: this.data.organizer,
+        max_participants: this.data.max_participants,
+        current_participants: 0,
+        creator: this.data.username
+      }
+    }).then(res => {
+      console.log(res.result)
+      var code = res.result["code"]
+      if (code == 200) {
+        wx.navigateBack({
+          delta: 1
+        })
+      } else if (code == 500) {
+
+      }
+    })
+  },
+  onCancel() {
+    wx.navigateBack({
+      delta: 1
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let storedToken = wx.getStorageSync('token');
+    let token = storedToken.value;
+    let expirationTime = storedToken.expires;
+    if (storedToken != "") {
+      // 检查 token 是否过期
+      if (expirationTime && new Date().getTime() > expirationTime) {
+        // Token 已过期，需要重新获取
+        // 清除过期的 token
+        wx.removeStorageSync('token');
+        // 这里可以执行重新获取 token 的逻辑
+      } else {
+        // Token 未过期，可以使用
+        this.setData({
+          username: token,
+          user_permission: 1,
+        })
+      }
+    }
   },
 
   /**

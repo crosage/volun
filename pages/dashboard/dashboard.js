@@ -8,7 +8,7 @@ Page({
     active: "dashboard",
     activities: [],
     userPermission: 0,
-
+    username: ""
   },
   play: function () {
     this.videoContext.play()

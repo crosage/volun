@@ -12,7 +12,9 @@ Page({
   data: {
     active: "home",
     userPermission: 0,
-    username: ""
+    username: "",
+    page: 1,
+    limit: 20
   },
   play: function () {
     this.videoContext.play()

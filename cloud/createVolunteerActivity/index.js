@@ -21,6 +21,7 @@ exports.main = async (event, context) => {
     organizer,
     max_participants,
     current_participants,
+    creator,
   } = event
   const activityData = {
     activity_name: activity_name,
@@ -31,9 +32,10 @@ exports.main = async (event, context) => {
     post_time: post_time,
     registration_deadline: registration_deadline,
     organizer: organizer,
+    creator: creator,
     max_participants: max_participants,
     current_participants: current_participants,
-    creator: wxContext.OPENID
+
   }
   try {
     const res = await db.collection("activities").add({
@@ -42,7 +44,7 @@ exports.main = async (event, context) => {
     return {
       code: 200,
       message: "活动创建成功",
-      activityId: res._id
+      activityId: creator
     }
   } catch (err) {
     return {
