@@ -9,13 +9,13 @@ Component({
       type: String,
       value: ""
     },
-    text_color:{ 
-      type:String,
-      value:'#000000'
+    text_color: {
+      type: String,
+      value: '#000000'
     },
-    text_size:{ 
-      type:String,
-      value:"16"
+    text_size: {
+      type: String,
+      value: "16"
     }
   },
 

@@ -1,32 +1,17 @@
 <!-- pages/login/login.wxml -->
-<van-nav-bar
-  title="登录页面"
-  left-arrow
-  bind:click-left="onClickLeft"
-  bind:click-right="onClickRight"
-/>
+<van-nav-bar title="登录页面" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <van-toast id="van-toast" />
 
 
 <view>
   <view class="container">
-    <van-field
-      custom-class="login-input"
-      model:value="{{ username }}"
-      placeholder="请输入用户名"
-      input-align="center"
-    />
+    <van-field custom-class="login-input" model:value="{{ username }}" placeholder="请输入用户名" input-align="center" />
   </view>
   <view class="container">
-    <van-field
-      custom-class="login-input"
-      model:value="{{ passhash }}"
-      placeholder="请输入密码"
-      input-align="center"
-    />
+    <van-field custom-class="login-input" model:value="{{ passhash }}" placeholder="请输入密码" input-align="center" />
   </view>
   <view style="margin: 20px;">
-    <van-button size="large" color="skyblue" bind:click="onLogin" round >
+    <van-button size="large" color="skyblue" bind:click="onLogin" round>
       注册或登录
     </van-button>
   </view>

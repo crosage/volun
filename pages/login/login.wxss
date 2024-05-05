@@ -2,9 +2,13 @@
 page {
   background-color: #ffffff;
 }
+
 .container {
-  border-radius: 10px; /* 设置圆角 */
-  background-color: #ffffff; /* 设置背景色 */
-  padding: 10px; /* 设置内边距 */
+  border-radius: 10px;
+  /* 设置圆角 */
+  background-color: #ffffff;
+  /* 设置背景色 */
+  padding: 10px;
+  /* 设置内边距 */
   margin: 20px;
 }

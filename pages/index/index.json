@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "volun_card":"../../components/volun_card/volun_card",
-    "floating_action_icon":"../../components/floating_action_icon/floating_action_icon"
+    "volun_card": "../../components/volun_card/volun_card",
+    "floating_action_icon": "../../components/floating_action_icon/floating_action_icon"
   }
 }

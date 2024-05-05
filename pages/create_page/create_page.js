@@ -14,12 +14,12 @@ Page({
     min_date: new Date().getTime(),
     max_date: new Date(new Date().getTime()).setFullYear(new Date(new Date().getTime()).getFullYear() + 1),
     current_date: new Date().getTime(),
-    show:0,
+    show: 0,
     formatted_date: ""
   },
   onInputDatetime() {
     this.setData({
-      show:1,
+      show: 1,
     });
   },
   onSubmitDatetime(event) {
@@ -33,13 +33,23 @@ Page({
       currentDate: event.detail,
       formatted_date: `${year}-${month}-${day} ${hour}:${minutes}`
     });
-    console.log(this.data.currentDate)
-    console.log(this.data.formatted_date)
-    console.log(this.data.max_date)
-    console.log(this.data.min_date)
   },
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
+  },
+  onPostList() {
+    // activity_name,
+    // description_thumb,
+    // description,
+    // location,
+    // date,
+    // post_time,
+    // registration_deadline,
+    // organizer,
+    // max_participants,
+    // current_participants,
   },
   /**
    * 生命周期函数--监听页面加载

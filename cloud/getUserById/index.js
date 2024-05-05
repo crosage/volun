@@ -1,14 +1,18 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+}) // 使用当前云环境
 
 const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  const { _id } = event 
+  const {
+    _id
+  } = event
 
   try {
     const res = await db.collection("users").doc(_id).get()
@@ -28,7 +32,7 @@ exports.main = async (event, context) => {
     return {
       code: 500,
       message: "服务器内部错误",
-      error:err
+      error: err
     }
   }
 }

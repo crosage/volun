@@ -29,7 +29,7 @@ Component({
   methods: {
 
   },
-  lifetimes:{
-    
+  lifetimes: {
+
   }
 })

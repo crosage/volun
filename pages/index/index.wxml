@@ -1,9 +1,4 @@
-<van-nav-bar
-  title="标题"
-  left-arrow
-  bind:click-left="onClickLeft"
-  bind:click-right="onClickRight"
-/>
+<van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <view>
   <van-row>
     <!-- <test></test> -->
@@ -22,5 +17,3 @@
   <van-tabbar-item name="admin" icon="user-o" wx:if="{{userPermission>=3}}"></van-tabbar-item>
   <van-tabbar-item name="my" icon="smile-o"></van-tabbar-item>
 </van-tabbar>
-
-

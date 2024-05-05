@@ -2,16 +2,14 @@
   height: 1px;
   background-color: #e5e5e5;
   margin-top: 10px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
-
- 
 /* 单元格标题title */
 .van-cell .van-cell__title {
   color: #7186e1;
 }
- 
+
 
 
 .image-container {
@@ -21,5 +19,3 @@
   justify-content: center;
   align-items: center;
 }
-
-
