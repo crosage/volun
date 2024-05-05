@@ -10,9 +10,37 @@ Page({
     date: '',
     registration_deadline: '',
     max_participants: 0,
-    organizer: ''
+    organizer: '',
+    min_date: new Date().getTime(),
+    max_date: new Date(new Date().getTime()).setFullYear(new Date(new Date().getTime()).getFullYear() + 1),
+    current_date: new Date().getTime(),
+    show:0,
+    formatted_date: ""
   },
-
+  onInputDatetime() {
+    this.setData({
+      show:1,
+    });
+  },
+  onSubmitDatetime(event) {
+    const date = new Date(event.detail);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    const hour = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    this.setData({
+      currentDate: event.detail,
+      formatted_date: `${year}-${month}-${day} ${hour}:${minutes}`
+    });
+    console.log(this.data.currentDate)
+    console.log(this.data.formatted_date)
+    console.log(this.data.max_date)
+    console.log(this.data.min_date)
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

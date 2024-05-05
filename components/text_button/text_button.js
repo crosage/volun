@@ -5,9 +5,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    buttonText: '',
-    textColor: '#000000',
-    textSize: 16,
+    button_text: {
+      type: String,
+      value: ""
+    },
+    text_color:{ 
+      type:String,
+      value:'#000000'
+    },
+    text_size:{ 
+      type:String,
+      value:"16"
+    }
   },
 
   /**

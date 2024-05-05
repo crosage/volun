@@ -36,6 +36,8 @@
     "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

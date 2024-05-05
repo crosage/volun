@@ -1,3 +1,3 @@
 <view class="container">
-  <text class="text-button" style="color: {{ textColor }}; font-size: {{ textSize }}px;" bindtap="handleButtonClick">{{ buttonText }}</text>
+  <text class="text-button" style="color: {{ text_color }}; font-size: {{ text_size }}px;">{{ button_text }}</text>
 </view>
