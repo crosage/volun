@@ -4,8 +4,10 @@
 <van-tabs active="a" color="#5bc2e7">
   <van-tab title="我参与的" name="a">内容 1</van-tab>
   <van-tab title="我发起的" name="b">
-
     <view wx:for="{{managed_activities}}" wx:key="index">
+      <block wx:if="{{index > 0}}">
+        <view style="margin-top: 10px;"></view>
+      </block>
       <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
     </view>
   </van-tab>

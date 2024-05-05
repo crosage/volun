@@ -1,7 +1,11 @@
 <van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <view wx:for="{{activities}}" wx:key="index">
+  <block wx:if="{{index > 0}}">
+    <view style="margin-top: 10px;"></view>
+  </block>
   <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
 </view>
+
 
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>

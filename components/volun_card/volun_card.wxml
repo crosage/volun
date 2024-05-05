@@ -1,7 +1,7 @@
 <!--components/volun_card/volun_card.wxml-->
 <!-- <text>components/volun_card/volun_card.wxml</text> -->
 
-<van-cell-group inset style="margin: 10rem;">
+<van-cell-group inset>
   <!-- <van-cell title="单元格" value="内容" /> -->
   <van-cell use-label-slot="true">
     <view slot="title">
