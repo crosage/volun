@@ -11,14 +11,17 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const {
+    user_name,
     page_size,
     page_number
   } = event
 
   try {
     const res = await db.collection("activities")
-      .where({})
-      .skip((page_number-1)*page_size)
+      .where({
+        user_name: user_name
+      })
+      .skip((page_number - 1) * page_size)
       .limit(page_size)
       .get()
     if (res.data.length > 0) {

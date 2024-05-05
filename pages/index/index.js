@@ -11,10 +11,12 @@ wx.cloud.init({
 Page({
   data: {
     active: "home",
-    userPermission: 0,
+    user_permission: 0,
     username: "",
+    names: ['Alice', 'Bob', 'Charlie'],
+    page_size: 20,
     page: 1,
-    limit: 20
+    activities: []
   },
   play: function () {
     this.videoContext.play()
@@ -63,7 +65,7 @@ Page({
   handtest() {
     wx.removeStorageSync('token');
     this.setData({
-      userPermission: 0,
+      user_permission: 0,
       username: ""
     })
   },
@@ -82,9 +84,30 @@ Page({
         // Token 未过期，可以使用
         this.setData({
           username: token,
-          userPermission: 1,
+          user_permission: 1,
         })
       }
     }
+
+    wx.cloud.callFunction({
+      name: "getVolunteerActivities",
+      data: {
+        page_size: this.data.page_size,
+        page_number: this.data.page
+      }
+    }).then(res => {
+      console.log(res.result)
+      var code = res.result["code"]
+      if (code == 200) {
+        this.setData({
+          activities: res.result["data"]
+        })
+        console.log(this.data.activities)
+        console.log(this.data.names)
+        console.log(this.data.user_permission)
+      } else {
+
+      }
+    }).catch(console.error)
   },
 })
