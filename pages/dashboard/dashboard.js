@@ -92,13 +92,14 @@ Page({
     }
 
     wx.cloud.callFunction({
-      name: "getVolunteerActivitiesByUsername",
+      name: "getActivitiesAttendedByUsername",
       data: {
         user_name: this.data.username,
         page_size: this.data.page_size,
         page_number: this.data.page
       }
     }).then(res => {
+      console.log(res)
       var code = res.result["code"]
       if (code == 200) {
         this.setData({

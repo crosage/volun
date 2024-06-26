@@ -37,6 +37,11 @@ Page({
       formatted_date: `${year}-${month}-${day} ${hour}:${minutes}`
     });
   },
+  onClickLeft() {
+    wx.navigateBack({
+      delta: 1
+    });
+  },
   onCloseDatetimePicker() {
     this.setData({
       show: false

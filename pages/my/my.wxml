@@ -1,25 +1,12 @@
 <!--pages/my/my.wxml-->
-<van-nav-bar
-  title="标题"
-  left-arrow
-  bind:click-left="onClickLeft"
-  bind:click-right="onClickRight"
-/>
+<van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 
 <van-cell>
   <view slot="title">
     <van-row>
       <view style="display: flex;">
-        <van-image
-          round
-          width="60px"
-          height="60px"
-          fit="cover"
-          src="https://img.yzcdn.cn/vant/cat.jpeg"
-          bind:click="login"
-        />
         <van-col>
-          <view style="color: black;font-size: 20px;">
+          <view style="color: black;font-size: 20px;" bind:tap="login">
             {{username}}
           </view>
           <view style="color: gray;">
@@ -34,14 +21,14 @@
 
   </view>
 </van-cell>
-<van-cell title="单元格">
+<van-cell title="完善个人信息">
   <van-icon slot="right-icon" name="search" class="custom-icon" />
 </van-cell>
 <van-button wx:if="{{userPermission!=0}}" size="large" color="rgb(203,64,66)" bind:click="logout">
-登出
+  登出
 </van-button>
 <van-row style="background-color: rgb(3, 5, 8);">
-  
+
 
 </van-row>
 <van-tabbar active="{{ active }}" bind:change="onChangePage">

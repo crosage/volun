@@ -35,7 +35,6 @@ exports.main = async (event, context) => {
     creator: creator,
     max_participants: max_participants,
     current_participants: current_participants,
-
   }
   try {
     const res = await db.collection("activities").add({

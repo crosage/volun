@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
 
   try {
     const res = await db.collection("activities")
-      .skip((page_number-1)*page_size)
+      .skip((page_number - 1) * page_size)
       .limit(page_size)
       .get()
     if (res.data.length > 0) {

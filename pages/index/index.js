@@ -4,7 +4,7 @@
 // 管理员权限为3，可以查看自己参加的事务添加事务，还有查看人员列表
 
 wx.cloud.init({
-  env: 'volun-4g5ysmbd4b2b8c09',
+  env: 'volun-5gncu3e9a390e719',
   traceUser: true,
 })
 
@@ -13,6 +13,7 @@ Page({
     active: "home",
     user_permission: 0,
     username: "",
+    user_id:0,
     names: ['Alice', 'Bob', 'Charlie'],
     page_size: 20,
     page: 1,
@@ -71,7 +72,7 @@ Page({
   },
   onLoad(options) {
     let storedToken = wx.getStorageSync('token');
-    let token = storedToken.value;
+    let token = storedToken;
     let expirationTime = storedToken.expires;
     if (storedToken != "") {
       // 检查 token 是否过期
@@ -83,14 +84,15 @@ Page({
       } else {
         // Token 未过期，可以使用
         this.setData({
-          username: token,
-          user_permission: 1,
+          username: this.data.username,
+          user_id: this.data._id,
+          expires: expirationTime,
         })
       }
     }
 
     wx.cloud.callFunction({
-      name: "getVolunteerActivities",
+      name: "getActivities",
       data: {
         page_size: this.data.page_size,
         page_number: this.data.page
@@ -102,8 +104,7 @@ Page({
         this.setData({
           activities: res.result["data"]
         })
-      } else {
-      }
+      } else {}
     }).catch(console.error)
   },
 })

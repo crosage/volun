@@ -11,6 +11,7 @@ Page({
   data: {
     username: "",
     passhash: "",
+    user_id: ""
   },
   onChangePage(event) {
     this.setData({
@@ -105,7 +106,8 @@ Page({
           let tmp = new Date().getTime()
           console.log(tmp)
           wx.setStorageSync('token', {
-            value: this.data.username,
+            username: this.data.username,
+            user_id: this.data._id,
             expires: expirationTime,
           });
           console.log("完成set" + wx.getStorageSync('token'))
