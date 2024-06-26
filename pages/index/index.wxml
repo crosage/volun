@@ -3,7 +3,7 @@
   <block wx:if="{{index > 0}}">
     <view style="margin-top: 10px;"></view>
   </block>
-  <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+  <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}" volun_id="{{item._id}}"></volun_card>
 </view>
 
 

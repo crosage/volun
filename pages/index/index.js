@@ -99,6 +99,7 @@ Page({
       }
     }).then(res => {
       var code = res.result["code"]
+      console.log(res.result["data"])
       if (code == 200) {
         this.setData({
           activities: res.result["data"]

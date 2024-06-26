@@ -1,11 +1,6 @@
 <!--pages/admin/admin.wxml-->
 <!-- <text>pages/admin/admin.wxml</text> -->
-<van-nav-bar
-  title="标题"
-  left-arrow
-  bind:click-left="onClickLeft"
-  bind:click-right="onClickRight"
-/>
+<van-nav-bar title="管理员页面" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 
 
 <van-col>

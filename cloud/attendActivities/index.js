@@ -15,7 +15,6 @@ exports.main = async (event, context) => {
     user_id,
     activity_id
   } = event
-
   // 参数验证
   if (!user_id || !activity_id) {
     return {
@@ -41,7 +40,8 @@ exports.main = async (event, context) => {
     if (existingParticipation.data.length > 0) {
       return {
         code: 409,
-        message: "用户已经参与该活动"
+        message: "用户已经参与该活动",
+        data:existingParticipation.data
       }
     }
 

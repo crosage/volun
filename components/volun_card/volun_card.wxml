@@ -15,7 +15,7 @@
           </view>
         </van-row>
         <van-row>
-          <text style="color: #1c78d3;" bind:tap="">
+          <text style="color: #1c78d3;" bind:tap="onLearnMore">
             了解更多
           </text>
         </van-row>
