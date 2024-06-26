@@ -74,7 +74,7 @@ Page({
    */
   onLoad(options) {
     let storedToken = wx.getStorageSync('token');
-    let token = storedToken.value;
+    let token = storedToken;
     let expirationTime = storedToken.expires;
     if (storedToken != "") {
       // 检查 token 是否过期

@@ -13,7 +13,7 @@ Page({
     active: "home",
     user_permission: 0,
     username: "",
-    user_id:0,
+    user_id: 0,
     names: ['Alice', 'Bob', 'Charlie'],
     page_size: 20,
     page: 1,
@@ -84,9 +84,9 @@ Page({
       } else {
         // Token 未过期，可以使用
         this.setData({
-          username: this.data.username,
-          user_id: this.data._id,
-          expires: expirationTime,
+          username: token.username,
+          user_permission: 1,
+          user_id: token._id
         })
       }
     }

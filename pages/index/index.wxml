@@ -1,4 +1,4 @@
-<van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-nav-bar title="首页" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <view wx:for="{{activities}}" wx:key="index">
   <block wx:if="{{index > 0}}">
     <view style="margin-top: 10px;"></view>
