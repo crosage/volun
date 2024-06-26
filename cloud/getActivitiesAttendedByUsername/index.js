@@ -11,25 +11,44 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const {
-    username,
+    user_id,
     page_size,
     page_number
   } = event
 
   try {
-    const res = await db.collection("activities")
+    // 首先在 participationData 表中查找 user_id 对应的记录
+    const userParticipation = await db.collection("activity_participants")
       .where({
-        participants: username
+        user_id: user_id
       })
       .skip((page_number - 1) * page_size)
       .limit(page_size)
       .get()
 
-    if (res.data.length > 0) {
+    if (userParticipation.data.length === 0) {
+      return {
+        code: 404,
+        message: "未找到相关活动",
+        data: []
+      }
+    }
+    // 从 participationData 中获取 activity_id
+    const activityIds = userParticipation.data.map(record => record.activity_id)
+
+    // 使用 activity_id 在 activities 表中查找相关活动
+    const activities = await db.collection("activities")
+      .where({
+        _id: db.command.in(activityIds)
+      })
+      .get()
+
+    if (activities.data.length > 0) {
       return {
         code: 200,
         message: "查询成功",
-        data: res.data
+        data: activities.data,
+        // activities:userParticipation.data
       }
     } else {
       return {
@@ -42,7 +61,8 @@ exports.main = async (event, context) => {
     return {
       code: 500,
       message: "服务器内部错误",
-      error: err
+      error: err,
+      // activities:userParticipation.data
     }
   }
 }

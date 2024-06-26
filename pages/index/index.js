@@ -13,7 +13,7 @@ Page({
     active: "home",
     user_permission: 0,
     username: "",
-    user_id: 0,
+    user_id: "",
     names: ['Alice', 'Bob', 'Charlie'],
     page_size: 20,
     page: 1,
@@ -86,7 +86,7 @@ Page({
         this.setData({
           username: token.username,
           user_permission: 1,
-          user_id: token._id
+          user_id: token.user_id
         })
       }
     }
@@ -98,7 +98,6 @@ Page({
         page_number: this.data.page
       }
     }).then(res => {
-      console.log(res.result)
       var code = res.result["code"]
       if (code == 200) {
         this.setData({

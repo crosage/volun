@@ -10,7 +10,8 @@ Page({
     page_size: 20,
     attended_activities: [],
     managed_activities: [],
-    userPermission: 0,
+    user_permission: 0,
+    user_id: "",
     username: ""
   },
   play: function () {
@@ -73,7 +74,7 @@ Page({
    */
   onLoad(options) {
     let storedToken = wx.getStorageSync('token');
-    let token = storedToken.value;
+    let token = storedToken;
     let expirationTime = storedToken.expires;
     if (storedToken != "") {
       // 检查 token 是否过期
@@ -85,8 +86,9 @@ Page({
       } else {
         // Token 未过期，可以使用
         this.setData({
-          username: token,
-          userPermission: 1,
+          username: token.username,
+          user_permission: 1,
+          user_id: token.user_id
         })
       }
     }
@@ -94,13 +96,33 @@ Page({
     wx.cloud.callFunction({
       name: "getActivitiesAttendedByUsername",
       data: {
+        user_id: this.data.user_id,
+        page_size: this.data.page_size,
+        page_number: this.data.page
+      }
+    }).then(res => {
+
+      var code = res.result["code"]
+      console.log(res.result)
+      if (code == 200) {
+        this.setData({
+          attended_activities: res.result["data"]
+        })
+        console.log(this.data.attended_activities)
+      } else {}
+    }).catch(console.error)
+
+    wx.cloud.callFunction({
+      name: "getActivitiesCreatedByUsername",
+      data: {
         user_name: this.data.username,
         page_size: this.data.page_size,
         page_number: this.data.page
       }
     }).then(res => {
-      console.log(res)
+
       var code = res.result["code"]
+      console.log(res.result)
       if (code == 200) {
         this.setData({
           managed_activities: res.result["data"]

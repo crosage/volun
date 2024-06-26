@@ -107,7 +107,7 @@ Page({
           console.log(tmp)
           wx.setStorageSync('token', {
             username: this.data.username,
-            user_id: this.data._id,
+            user_id: data["_id"],
             expires: expirationTime,
           });
           console.log("完成set" + wx.getStorageSync('token'))

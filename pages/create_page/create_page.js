@@ -18,6 +18,7 @@ Page({
     show: 0,
     formatted_date: "",
     username: "",
+    user_id: "",
     user_permission: 0
   },
   onInputDatetime() {
@@ -95,7 +96,7 @@ Page({
    */
   onLoad(options) {
     let storedToken = wx.getStorageSync('token');
-    let token = storedToken.value;
+    let token = storedToken;
     let expirationTime = storedToken.expires;
     if (storedToken != "") {
       // 检查 token 是否过期
@@ -107,8 +108,9 @@ Page({
       } else {
         // Token 未过期，可以使用
         this.setData({
-          username: token,
+          username: token.username,
           user_permission: 1,
+          user_id: token.user_id
         })
       }
     }
