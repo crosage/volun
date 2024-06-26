@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/login/login",
     "pages/dashboard/dashboard",
-    "pages/create_page/create_page"
+    "pages/create_page/create_page",
+    "pages/activity/activity"
   ],
   "window": {
     "navigationStyle": "custom"
@@ -41,6 +42,5 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-popup": "@vant/weapp/popup/index"
-
   }
 }

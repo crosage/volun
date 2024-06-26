@@ -2,14 +2,33 @@
 <!-- <text>pages/admin/admin.wxml</text> -->
 <van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <van-tabs active="a" color="#5bc2e7">
-  <van-tab title="我参与的" name="a">内容 1</van-tab>
-  <van-tab title="我发起的" name="b">
-    <view wx:for="{{managed_activities}}" wx:key="index">
-      <block wx:if="{{index > 0}}">
-        <view style="margin-top: 10px;"></view>
-      </block>
-      <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+  <van-tab title="我参与的" name="a">
+    <view style="text-align: center; margin-top: 20vh; transform: translateY(-50%);" wx:if="{{attended_activities.length === 0}}">
+      <text style="font-size: 16px; color: #999;">暂无活动</text>
     </view>
+
+    <block wx:if="{{attended_activities.length > 0}}">
+      <view wx:for="{{attended_activities}}" wx:key="index">
+        <block wx:if="{{index > 0}}">
+          <view style="margin-top: 10px;"></view>
+        </block>
+        <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+      </view>
+    </block>
+  </van-tab>
+  <van-tab title="我发起的" name="b">
+    <block wx:if="{{managed_activities.length === 0}}">
+      <view>暂无活动</view>
+    </block>
+
+    <block wx:if="{{managed_activities.length > 0}}">
+      <view wx:for="{{managed_activities}}" wx:key="index">
+        <block wx:if="{{index > 0}}">
+          <view style="margin-top: 10px;"></view>
+        </block>
+        <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+      </view>
+    </block>
   </van-tab>
 </van-tabs>
 <floating_action_icon icon="plus" bind:tap="createActivity" />

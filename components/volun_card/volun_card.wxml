@@ -5,7 +5,7 @@
   <!-- <van-cell title="单元格" value="内容" /> -->
   <van-cell use-label-slot="true">
     <view slot="title">
-      <view class="van-cell-text">{{title}}</view>
+      <view class="van-cell-text" style="font-weight: bold; font-size: 16px;">{{title}}</view>
     </view>
     <view slot="label">
       <view>
@@ -14,12 +14,12 @@
             {{label}}
           </view>
         </van-row>
+        <van-row>
+          <text style="color: #1c78d3;" bind:tap="">
+            了解更多
+          </text>
+        </van-row>
       </view>
     </view>
   </van-cell>
-  <van-collapse value="{{ activeNames }}" bind:change="onChange">
-    <van-collapse-item title=" " name="1">
-      代码是写出来给人看的，附带能在机器上运行
-    </van-collapse-item>
-  </van-collapse>
 </van-cell-group>
