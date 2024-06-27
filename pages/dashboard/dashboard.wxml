@@ -1,6 +1,13 @@
 <!--pages/admin/admin.wxml-->
 <!-- <text>pages/admin/admin.wxml</text> -->
-<van-nav-bar title="控制面板" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-nav-bar title="控制面板" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-popup show="{{ showModal }}" bind:close="onClose">
+  <view style="text-align: center; color: black; font-size: 20px; margin-bottom: 15px;">
+    {{currentItem.activity_name}}
+  </view>
+
+  <canvas style="width: 200px; height: 200px; background: wheat; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" canvas-id="myQrcode"></canvas>
+</van-popup>
 <van-tabs active="a" color="#5bc2e7">
   <van-tab title="我参与的" name="a">
     <view style="text-align: center; margin-top: 20vh; transform: translateY(-50%);" wx:if="{{attended_activities.length === 0}}">
@@ -8,7 +15,7 @@
     </view>
 
     <block wx:if="{{attended_activities.length > 0}}">
-      <view wx:for="{{attended_activities}}" wx:key="index">
+      <view wx:for="{{attended_activities}}" wx:key="index" bind:tap="handleItemClick" data-index="{{index}}">
         <block>
           <view style="margin-top: 10px;"></view>
         </block>
@@ -22,11 +29,11 @@
     </view>
 
     <block wx:if="{{managed_activities.length > 0}}">
-      <view wx:for="{{managed_activities}}" wx:key="index">
+      <view wx:for="{{managed_activities}}" wx:key="index" data-index="{{index}}">
         <block>
           <view style="margin-top: 10px;"></view>
         </block>
-        <volun_card activity_name="{{item.activity_name}}" description_thumb="{{item.description_thumb}}" volun_id="{{item._id}}" post_time="{{item.post_time}}" current_participants="{{item.current_participants}}" max_participants="{{item.max_participants}}" ></volun_card>
+        <volun_card activity_name="{{item.activity_name}}" description_thumb="{{item.description_thumb}}" volun_id="{{item._id}}" post_time="{{item.post_time}}" current_participants="{{item.current_participants}}" max_participants="{{item.max_participants}}"></volun_card>
       </view>
     </block>
   </van-tab>

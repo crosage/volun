@@ -1,4 +1,5 @@
 // pages/admin/admin.js
+let drawQrcode = require("../../utils/weapp.qrcode.min.js");
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
     managed_activities: [],
     user_permission: 0,
     user_id: "",
-    username: ""
+    username: "",
+    currentItem: {},
+    showModal: false,
   },
   play: function () {
     this.videoContext.play()
@@ -62,7 +65,7 @@ Page({
 
   },
   createActivity() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/create_page/create_page',
       fail: function (res) {
         console.error("跳转失败:", res)
@@ -101,7 +104,6 @@ Page({
         page_number: this.data.page
       }
     }).then(res => {
-
       var code = res.result["code"]
       console.log(res.result)
       if (code == 200) {
@@ -115,7 +117,7 @@ Page({
     wx.cloud.callFunction({
       name: "getActivitiesCreatedByUsername",
       data: {
-        user_name: this.data.username,
+        user_name: this.data.user_id,
         page_size: this.data.page_size,
         page_number: this.data.page
       }
@@ -131,14 +133,34 @@ Page({
       } else {}
     }).catch(console.error)
   },
-
+  handleItemClick(event) {
+    const index = event.currentTarget.dataset.index;
+    const item = this.data.attended_activities[index];
+    this.setData({
+      currentItem: item,
+      showModal: true,
+    });
+    drawQrcode({
+      width: 200,
+      height: 200,
+      canvasId: 'myQrcode',
+      text: JSON.stringify({
+        user_id: this.data.user_id,
+        item_id: item._id
+      }),
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
 
   },
-
+  onClose() {
+    this.setData({
+      showModal: false
+    });
+  },
   /**
    * 生命周期函数--监听页面显示
    */

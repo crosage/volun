@@ -1,4 +1,6 @@
 // pages/admin/admin.js
+import Toast from '@vant/weapp/toast/toast';
+
 Page({
 
   /**
@@ -6,9 +8,9 @@ Page({
    */
   data: {
     active: "my",
-    userPermission: 0,
+    user_permission: 0,
     username: "点击登录",
-    user_id: 0
+    user_id: ""
   },
   play: function () {
     this.videoContext.play()
@@ -61,14 +63,36 @@ Page({
       }
     });
   },
+  
   scanCode() {
     let that = this;
     wx.scanCode({
       success(res) {
-        console.log(res);
+        console.log(res.result);
+        const scandata = JSON.parse(res.result);
+        console.log(that.data)
+        console.log(scandata.user_id)
         that.setData({
           result: res.result,
         });
+        wx.cloud.callFunction({
+          name: "checkattendActivity",
+          data: {
+            admin_id: that.data.user_id,
+            user_id: scandata.user_id,
+            activity_id: scandata.item_id
+          }
+        }).then(res => {
+          var code = res.result["code"]
+          console.log(res.result)
+          if (code == 200) {
+            console.log("成功")
+            Toast.success('成功核验')
+          } else {
+            console.log(res.result["message"])
+            Toast.fail(res.result["message"])
+          }
+        }).catch(console.error)
       },
       fail(err) {
         console.error(err);
@@ -83,7 +107,7 @@ Page({
     wx.removeStorageSync('token');
     this.setData({
       userPermission: 0,
-      username: ""
+      username: "点击登录"
     })
   },
   /**
@@ -102,11 +126,13 @@ Page({
         // 这里可以执行重新获取 token 的逻辑
       } else {
         // Token 未过期，可以使用
+        console.log(token)
         this.setData({
           username: token.username,
-          userPermission: 1,
-          user_id: token._id
+          user_permission: 1,
+          user_id: token.user_id
         })
+        console.log(this.data)
       }
     }
   },

@@ -27,7 +27,8 @@ exports.main = async (event, context) => {
   const participationData = {
     user_id: user_id,
     activity_id: activity_id,
-    join_time: new Date()
+    join_time: new Date(),
+    verified: false // 新增字段，初始值为 false
   }
 
   try {
@@ -41,7 +42,7 @@ exports.main = async (event, context) => {
       return {
         code: 409,
         message: "用户已经参与该活动",
-        data:existingParticipation.data
+        data: existingParticipation.data
       }
     }
 

@@ -72,7 +72,7 @@ Page({
         organizer: this.data.organizer,
         max_participants: this.data.max_participants,
         current_participants: 0,
-        creator: this.data.username
+        creator: this.data.user_id
       }
     }).then(res => {
       console.log(res.result)

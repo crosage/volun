@@ -69,7 +69,7 @@ Component({
   methods: {
     onLearnMore() {
       const volun_id = this.data.volun_id;
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/activity/activity?volun_id=' + volun_id,
         fail: function (res) {
           console.error("跳转失败:", res)
@@ -77,6 +77,7 @@ Component({
       })
     },
   },
+
   lifetimes: {
 
   }

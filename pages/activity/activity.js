@@ -1,3 +1,4 @@
+import Toast from '@vant/weapp/toast/toast';
 // pages/activity/activity.js
 Page({
 
@@ -19,6 +20,11 @@ Page({
     username: "",
     user_permission: 0,
     user_id: ""
+  },
+  onClickLeft() {
+    wx.navigateBack({
+      delta: 1
+    });
   },
   onChangePage(event) {
     this.setData({
@@ -78,7 +84,10 @@ Page({
       var code = res.result["code"]
       if (code == 200) {
         console.log("成功参加活动")
-      } else {}
+        Toast.success("成功参加活动")
+      } else {
+        Toast.fail(res.result["message"])
+      }
     }).catch(console.error)
   },
 
