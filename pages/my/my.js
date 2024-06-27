@@ -19,9 +19,8 @@ Page({
     })
     console.log(event.detail)
     switch (event.detail) {
-
       case 'home':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/index/index',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -29,7 +28,7 @@ Page({
         })
         break;
       case 'dashboard':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/dashboard/dashboard',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -37,7 +36,7 @@ Page({
         });
         break;
       case 'admin':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/admin/admin',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -45,7 +44,7 @@ Page({
         });
         break;
       case 'my':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/my/my',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -55,11 +54,29 @@ Page({
     }
   },
   login() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/login/login',
       fail: function (res) {
         console.error("跳转失败:", res)
       }
+    });
+  },
+  scanCode() {
+    let that = this;
+    wx.scanCode({
+      success(res) {
+        console.log(res);
+        that.setData({
+          result: res.result,
+        });
+      },
+      fail(err) {
+        console.error(err);
+        wx.showToast({
+          title: '扫描失败',
+          icon: 'none',
+        });
+      },
     });
   },
   logout() {

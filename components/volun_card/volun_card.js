@@ -7,15 +7,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    title: {
-      type: String,
-      value: ""
-    },
     volun_id: {
-      type: String,
-      value: ""
-    },
-    label: {
       type: String,
       value: ""
     },
@@ -77,7 +69,7 @@ Component({
   methods: {
     onLearnMore() {
       const volun_id = this.data.volun_id;
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/activity/activity?volun_id=' + volun_id,
         fail: function (res) {
           console.error("跳转失败:", res)

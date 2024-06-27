@@ -1,9 +1,9 @@
 <van-nav-bar title="首页" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <view wx:for="{{activities}}" wx:key="index">
-  <block wx:if="{{index > 0}}">
+  <block>
     <view style="margin-top: 10px;"></view>
   </block>
-  <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}" volun_id="{{item._id}}"></volun_card>
+  <volun_card activity_name="{{item.activity_name}}" description_thumb="{{item.description_thumb}}" volun_id="{{item._id}}" post_time="{{item.post_time}}" current_participants="{{item.current_participants}}" max_participants="{{item.max_participants}}"></volun_card>
 </view>
 
 

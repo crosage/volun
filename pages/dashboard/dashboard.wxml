@@ -1,6 +1,6 @@
 <!--pages/admin/admin.wxml-->
 <!-- <text>pages/admin/admin.wxml</text> -->
-<van-nav-bar title="标题" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-nav-bar title="控制面板" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <van-tabs active="a" color="#5bc2e7">
   <van-tab title="我参与的" name="a">
     <view style="text-align: center; margin-top: 20vh; transform: translateY(-50%);" wx:if="{{attended_activities.length === 0}}">
@@ -9,24 +9,24 @@
 
     <block wx:if="{{attended_activities.length > 0}}">
       <view wx:for="{{attended_activities}}" wx:key="index">
-        <block wx:if="{{index > 0}}">
+        <block>
           <view style="margin-top: 10px;"></view>
         </block>
-        <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+        <volun_card activity_name="{{item.activity_name}}" description_thumb="{{item.description_thumb}}" volun_id="{{item._id}}" post_time="{{item.post_time}}" current_participants="{{item.current_participants}}" max_participants="{{item.max_participants}}"></volun_card>
       </view>
     </block>
   </van-tab>
   <van-tab title="我发起的" name="b">
-    <block wx:if="{{managed_activities.length === 0}}">
-      <view>暂无活动</view>
-    </block>
+    <view style="text-align: center; margin-top: 20vh; transform: translateY(-50%);" wx:if="{{managed_activities.length === 0}}">
+      <text style="font-size: 16px; color: #999;">暂无活动</text>
+    </view>
 
     <block wx:if="{{managed_activities.length > 0}}">
       <view wx:for="{{managed_activities}}" wx:key="index">
-        <block wx:if="{{index > 0}}">
+        <block>
           <view style="margin-top: 10px;"></view>
         </block>
-        <volun_card title="{{item.activity_name}}" label="{{item.description_thumb}}"></volun_card>
+        <volun_card activity_name="{{item.activity_name}}" description_thumb="{{item.description_thumb}}" volun_id="{{item._id}}" post_time="{{item.post_time}}" current_participants="{{item.current_participants}}" max_participants="{{item.max_participants}}" ></volun_card>
       </view>
     </block>
   </van-tab>

@@ -30,7 +30,7 @@ Page({
     switch (event.detail) {
 
       case 'home':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/index/index',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -38,7 +38,7 @@ Page({
         })
         break;
       case 'dashboard':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/dashboard/dashboard',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -46,7 +46,7 @@ Page({
         });
         break;
       case 'admin':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/admin/admin',
           fail: function (res) {
             console.error("跳转失败:", res)
@@ -54,7 +54,7 @@ Page({
         });
         break;
       case 'my':
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/my/my',
           fail: function (res) {
             console.error("跳转失败:", res)
