@@ -1,0 +1,14 @@
+<van-nav-bar title="注册页面" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-toast id="van-toast" />
+
+<view>
+  <van-cell title="初次注册需要收集姓名和学号信息（以便志愿活动组织者收集志愿者信息并给予志愿时长）">
+  </van-cell>
+  <van-field custom-class="login-input" model:value="{{ student_name }}" placeholder="请输入学生姓名" input-align="center" />
+  <van-field custom-class="login-input" model:value="{{ student_id }}" placeholder="请输入学生ID" input-align="center" />
+  <view style="margin: 20px;">
+    <van-button size="large" color="skyblue" bind:click="onRegister" round>
+      提交
+    </van-button>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<!--pages/creator_page/creator_page.wxml-->
+<van-nav-bar title="验证情况" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-index-bar index-list="{{ indexList }}">
+  <view>
+    <van-index-anchor index="已核验人员" />
+    <view wx:if="{{verified.length === 0}}" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: white;">
+      <text style="font-size: 16px; color: #999;">没有已验证人员</text>
+    </view>
+    <block wx:if="{{verified.length > 0}}">
+      <view wx:for="{{verified}}" wx:key="index">
+        <van-cell title="{{item.student_name}} {{item.student_id}}">
+        </van-cell>
+      </view>
+    </block>
+  </view>
+
+  <view>
+    <van-index-anchor index="未核验人员" />
+    <view wx:if="{{unverified.length === 0}}" style="display: flex; justify-content: center; align-items: center; height: 40px; background-color: white;">
+      <text style="font-size: 16px; color: #999;">没有未验证人员</text>
+    </view>
+    <block wx:if="{{unverified.length > 0}}">
+      <view wx:for="{{unverified}}" wx:key="index">
+        <van-cell title="{{item.user_name}}">
+        </van-cell>
+      </view>
+    </block>
+  </view>
+</van-index-bar>
+<van-tabbar active="{{ active }}" bind:change="onChangePage">
+  <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
+  <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{user_permission>=1}}"></van-tabbar-item>
+  <van-tabbar-item name="admin" icon="user-o" wx:if="{{user_permission>=3}}"></van-tabbar-item>
+  <van-tabbar-item name="my" icon="smile-o"></van-tabbar-item>
+</van-tabbar>

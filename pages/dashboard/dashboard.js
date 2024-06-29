@@ -75,7 +75,23 @@ Page({
         console.error("跳转失败:", res)
       }
     })
+  },
 
+  handleCreatorClick(event) {
+    const index = event.currentTarget.dataset.index;
+    console.log(event.currentTarget.dataset.index)
+    console.log(event.currentTarget)
+    const item = this.data.managed_activities[index];
+    console.log("##########")
+    console.log(index)
+    console.log(item)
+    console.log("##########")
+    wx.navigateTo({
+      url: '/pages/creator_page/creator_page?volun_id=' + item._id,
+      fail: function (res) {
+        console.error("跳转失败:", res)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,6 +1,23 @@
 <!--pages/my/my.wxml-->
 <van-nav-bar title="个人页面" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
-
+<van-popup show="{{ show }}" bind:close="onClose">
+  <view style="width: 300px;">
+    <view style="height: 20px;"></view>
+    <view style="font-weight: bold; font-size: 24px; text-align: center;">帮助</view>
+    <view style="height: 20px;"></view>
+    <text style="padding: 15px">志愿活动组织者</text>
+    <van-cell-group>
+      <van-cell title="1. 在控制面板创建活动" />
+      <van-cell title="2. 在个人页面扫描用户出示的二维码核验用户信息" />
+    </van-cell-group>
+    <text style="padding: 15px;">志愿活动参与者</text>
+    <van-cell-group>
+      <van-cell title="1. 在志愿列表点击了解更多参与活动" />
+      <van-cell title="2. 在控制面板点击自己参与的活动出示二维码" />
+      <van-cell title="3. 二维码被组织者扫描后即核验成功" />
+    </van-cell-group>
+  </view>
+</van-popup>
 <van-toast id="van-toast" />
 <van-cell>
   <view slot="title">
@@ -20,11 +37,11 @@
 
   </view>
 </van-cell>
-<van-cell title="完善个人信息">
-  <van-icon slot="right-icon" name="search" class="custom-icon" />
+<van-cell title="使用帮助" bind:click="helpMe">
+  <van-icon slot="right-icon" name="question-o" class="custom-icon" />
 </van-cell>
 <van-cell title="核验二维码" clickable="true" bind:click="scanCode">
-  <van-icon slot="right-icon" name="search" class="custom-icon" />
+  <van-icon slot="right-icon" name="scan" class="custom-icon" />
 </van-cell>
 <van-button wx:if="{{userPermission!=0}}" size="large" color="rgb(203,64,66)" bind:click="logout">
   登出

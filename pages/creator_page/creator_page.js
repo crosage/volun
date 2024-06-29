@@ -1,20 +1,33 @@
-// pages/admin/admin.js
 import Toast from '@vant/weapp/toast/toast';
-
+// pages/activity/activity.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: "my",
+    activity_id: "",
+    activity_name: "",
+    current_participants: 0,
+    date: "",
+    description: "",
+    description_thumb: "",
+    location: "",
+    max_participants: "",
+    organizer: "",
+    post_time: 0,
+    registration_deadline: 0,
+    username: "",
     user_permission: 0,
-    username: "点击登录",
     user_id: "",
-    show:false
+    verified: [],
+    unverified: [],
+    indexList: ["已核验人员", "未核验人员"]
   },
-  play: function () {
-    this.videoContext.play()
+  onClickLeft() {
+    wx.navigateBack({
+      delta: 1
+    });
   },
   onChangePage(event) {
     this.setData({
@@ -22,6 +35,7 @@ Page({
     })
     console.log(event.detail)
     switch (event.detail) {
+
       case 'home':
         wx.redirectTo({
           url: '/pages/index/index',
@@ -56,70 +70,18 @@ Page({
         break;
     }
   },
-  login() {
-    wx.redirectTo({
-      url: '/pages/login/login',
-      fail: function (res) {
-        console.error("跳转失败:", res)
-      }
-    });
-  },
-  helpMe(){
-    this.setData({ show: true });
-  },
-  onClose() {
-    this.setData({ show: false });
-  },
-  scanCode() {
-    let that = this;
-    wx.scanCode({
-      success(res) {
-        console.log(res.result);
-        const scandata = JSON.parse(res.result);
-        console.log(that.data)
-        console.log(scandata.user_id)
-        that.setData({
-          result: res.result,
-        });
-        wx.cloud.callFunction({
-          name: "checkattendActivity",
-          data: {
-            admin_id: that.data.user_id,
-            user_id: scandata.user_id,
-            activity_id: scandata.item_id
-          }
-        }).then(res => {
-          var code = res.result["code"]
-          console.log(res.result)
-          if (code == 200) {
-            console.log("成功")
-            Toast.success('成功核验')
-          } else {
-            console.log(res.result["message"])
-            Toast.fail(res.result["message"])
-          }
-        }).catch(console.error)
-      },
-      fail(err) {
-        console.error(err);
-        wx.showToast({
-          title: '扫描失败',
-          icon: 'none',
-        });
-      },
-    });
-  },
-  logout() {
-    wx.removeStorageSync('token');
-    this.setData({
-      userPermission: 0,
-      username: "点击登录"
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad(options) {
+    const volun_id = options.volun_id;
+    console.log("接收到的 volun_id:", volun_id);
+
+    this.setData({
+      activity_id: volun_id
+    });
+
     let storedToken = wx.getStorageSync('token');
     let token = storedToken;
     let expirationTime = storedToken.expires;
@@ -132,15 +94,61 @@ Page({
         // 这里可以执行重新获取 token 的逻辑
       } else {
         // Token 未过期，可以使用
-        console.log(token)
         this.setData({
           username: token.username,
           user_permission: 1,
           user_id: token.user_id
         })
-        console.log(this.data)
       }
     }
+
+    wx.cloud.callFunction({
+      name: "getActivitiesById",
+      data: {
+        _id: volun_id
+      }
+    }).then(res => {
+      var code = res.result["code"]
+      console.log(code)
+      console.log(res.result["activity"])
+      if (code == 200) {
+        const data = res.result["activity"]
+        console.log(data)
+        this.setData({
+          activity_name: data["activity_name"],
+          current_participants: data["current_participants"],
+          date: data["date"],
+          description: data["description"],
+          description_thumb: data["description_thumb"],
+          location: data["location"],
+          max_participants: data["max_participants"],
+          organizer: data["organizer"],
+          post_time: data["post_time"],
+          registration_deadline: data["registration_deadline"]
+        })
+      } else {}
+    }).catch(console.error)
+
+    wx.cloud.callFunction({
+      name: "getActivityParticipantStatus",
+      data: {
+        activity_id: volun_id
+      }
+    }).then(res => {
+      var code = res.result["code"]
+      console.log(code)
+      console.log(res.result)
+      if (code == 200) {
+        console.log("查询吃吃吃吃吃吃吃吃攻")
+        console.log(res.result["data"].unverified)
+        console.log(res.result["data"].verified)
+        this.setData({
+          verified: res.result["data"].verified,
+          unverified: res.result["data"].unverified
+        })
+        console.log(this.verified)
+      } else {}
+    }).catch(console.error)
   },
 
   /**
@@ -149,7 +157,11 @@ Page({
   onReady() {
 
   },
-
+  formatDate(timestamp) {
+    if (!timestamp) return "";
+    const date = new Date(timestamp);
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+  },
   /**
    * 生命周期函数--监听页面显示
    */

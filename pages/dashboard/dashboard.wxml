@@ -29,7 +29,7 @@
     </view>
 
     <block wx:if="{{managed_activities.length > 0}}">
-      <view wx:for="{{managed_activities}}" wx:key="index" data-index="{{index}}">
+      <view wx:for="{{managed_activities}}" wx:key="index" data-index="{{index}}" bind:tap="handleCreatorClick">
         <block>
           <view style="margin-top: 10px;"></view>
         </block>

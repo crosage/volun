@@ -1,7 +1,5 @@
-<!-- pages/login/login.wxml -->
 <van-nav-bar title="登录页面" left-arrow bind:click-left="onClickLeft" bind:click-right="onClickRight" />
 <van-toast id="van-toast" />
-
 
 <view>
   <view class="container">

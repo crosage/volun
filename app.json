@@ -7,7 +7,10 @@
     "pages/login/login",
     "pages/dashboard/dashboard",
     "pages/create_page/create_page",
-    "pages/activity/activity"
+    "pages/activity/activity",
+    "pages/creator_page/creator_page",
+    "pages/user_info/user_info",
+    "pages/register/register"
   ],
   "window": {
     "navigationStyle": "custom"
@@ -30,6 +33,8 @@
     "van-col": "@vant/weapp/col/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "van-card": "@vant/weapp/card/index",
     "van-field": "@vant/weapp/field/index",
