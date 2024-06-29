@@ -64,6 +64,10 @@ Page({
   loadActivities: function () {
 
   },
+  reloadPage() {
+    const options = this.options;
+    this.onLoad(options);
+  },
   createActivity() {
     wx.navigateTo({
       url: '/pages/create_page/create_page',
@@ -71,6 +75,7 @@ Page({
         console.error("跳转失败:", res)
       }
     })
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -122,7 +127,6 @@ Page({
         page_number: this.data.page
       }
     }).then(res => {
-
       var code = res.result["code"]
       console.log(res.result)
       if (code == 200) {
@@ -186,7 +190,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.reloadPage()
+    wx.stopPullDownRefresh();
   },
 
   /**

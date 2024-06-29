@@ -15,7 +15,9 @@
           </view>
         </van-row>
         <view style="height: 16px;"></view>
-
+        <van-row>
+          <text>截止时间: {{formattedDeadline}} </text>
+        </van-row>
         <van-row>
           <van-col span="18">
             <text style="color: #1c78d3;" bind:tap="onLearnMore">了解更多</text>

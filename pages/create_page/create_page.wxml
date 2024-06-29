@@ -7,7 +7,8 @@
   <van-field label="活动简介" model:value="{{description_thumb}}" placeholder="请输入活动简介" />
   <van-field label="活动详情" type="textarea" model:value="{{description}}" placeholder="请输入活动详情" autosize />
   <van-field label="活动地点" model:value="{{location}}" placeholder="选填" />
-  <van-field label="报名截止日期" model:value="{{formatted_date}}" bind:tap="onInputDatetime"></van-field>
+  <van-cell title="报名截止日期(点击以选定)" label="{{formatted_date}}" bind:tap="onInputDatetime">
+  </van-cell>
   <van-field label="最大参与人数" model:value="{{max_participants}}" placeholder="请输入最大参与人数"></van-field>
   <!-- <van-field label="主办方" v-model="organizer" placeholder="(默认为你的id)"></van-field> -->
   <van-row>

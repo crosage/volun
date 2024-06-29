@@ -36,8 +36,8 @@ Component({
       value: ""
     },
     registration_deadline: {
-      type: String,
-      value: ""
+      type: Number,
+      value: 0
     },
     organizer: {
       type: String,
@@ -60,13 +60,24 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    formattedDeadline: ""
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    formatTimestamp(timestamp) {
+      console.log(timestamp)
+      const date = new Date(timestamp); // 将时间戳转换为日期对象
+      console.log(date)
+      const year = date.getFullYear();
+      const month = ('0' + (date.getMonth() + 1)).slice(-2);
+      const day = ('0' + date.getDate()).slice(-2);
+      const hours = ('0' + date.getHours()).slice(-2);
+      const minutes = ('0' + date.getMinutes()).slice(-2);
+      return `${year}-${month}-${day} ${hours}:${minutes}`;
+    },
     onLearnMore() {
       const volun_id = this.data.volun_id;
       wx.navigateTo({
@@ -79,6 +90,10 @@ Component({
   },
 
   lifetimes: {
-
+    attached() {
+      this.setData({
+        formattedDeadline: this.formatTimestamp(this.data.registration_deadline)
+      })
+    }
   }
 })

@@ -1,5 +1,3 @@
-// 用户参与活动
-
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
@@ -23,15 +21,35 @@ exports.main = async (event, context) => {
     }
   }
 
-  // 构造参与数据
-  const participationData = {
-    user_id: user_id,
-    activity_id: activity_id,
-    join_time: new Date(),
-    verified: false // 新增字段，初始值为 false
-  }
-
   try {
+    // 获取活动信息
+    const activity = await db.collection("activities").doc(activity_id).get()
+    const activityData = activity.data
+
+    // 检查是否超过注册截止日期
+    if (new Date() > new Date(activityData.registration_deadline)) {
+      return {
+        code: 403,
+        message: "活动注册已截止"
+      }
+    }
+
+    // 检查是否超过最大参与人数
+    if (activityData.current_participants >= activityData.max_participants) {
+      return {
+        code: 403,
+        message: "活动参与人数已满"
+      }
+    }
+
+    // 构造参与数据
+    const participationData = {
+      user_id: user_id,
+      activity_id: activity_id,
+      join_time: new Date(),
+      verified: false // 新增字段，初始值为 false
+    }
+
     // 检查用户是否已经参与该活动
     const existingParticipation = await db.collection("activity_participants").where({
       user_id: user_id,
@@ -57,6 +75,7 @@ exports.main = async (event, context) => {
         current_participants: db.command.inc(1)
       }
     })
+
     return {
       code: 200,
       message: "用户参与活动成功"

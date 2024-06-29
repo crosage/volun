@@ -43,7 +43,8 @@ exports.main = async (event, context) => {
     return {
       code: 200,
       message: "活动创建成功",
-      activityId: creator
+      activityId: creator,
+      registration_deadline:registration_deadline
     }
   } catch (err) {
     return {
