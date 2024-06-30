@@ -82,7 +82,7 @@ Page({
           result: res.result,
         });
         wx.cloud.callFunction({
-          name: "checkattendActivity",
+          name: "checkattendActivities",
           data: {
             admin_id: that.data.user_id,
             user_id: scandata.user_id,

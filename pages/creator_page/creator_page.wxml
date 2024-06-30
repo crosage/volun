@@ -1,5 +1,6 @@
 <!--pages/creator_page/creator_page.wxml-->
 <van-nav-bar title="验证情况" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-toast id="van-toast" />
 <van-index-bar index-list="{{ indexList }}">
   <view>
     <van-index-anchor index="已核验人员" />
@@ -27,6 +28,10 @@
     </block>
   </view>
 </van-index-bar>
+<view style="height: 20px;"></view>
+<view>
+  <van-button type="warning" size="large" bind:click="onDelete">删除活动</van-button>
+</view>
 <van-tabbar active="{{ active }}" bind:change="onChangePage">
   <van-tabbar-item name="home" icon="wap-home-o"></van-tabbar-item>
   <van-tabbar-item name="dashboard" icon="orders-o" wx:if="{{user_permission>=1}}"></van-tabbar-item>

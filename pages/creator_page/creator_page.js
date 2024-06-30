@@ -73,7 +73,22 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
+  onDelete(){
+    console.log(this.data.activity_id)
+    wx.cloud.callFunction({
+      name: "deleteActivity",
+      data: {
+        activity_id: this.data.activity_id
+      }
+    }).then(res => {
+      console.log(res)
+      var code = res.result["code"]
+      console.log(code)
+      if (code == 200) {
+        Toast.success("成功删除活动")
+      } else {}
+    }).catch(console.error)
+  },
   onLoad(options) {
     const volun_id = options.volun_id;
     console.log("接收到的 volun_id:", volun_id);
